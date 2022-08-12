@@ -1,0 +1,9 @@
+=====================================
+ From: 李店店 (健康経営/DESKTOP-NCOH20A/10.1.2.26/P51-<0ebbc60f08da10bd>)
+   Cc: YC (健康経営/DESKTOP-Q2ACON9/10.1.2.70/ys-<f50cdeacd37a9772>)
+   Cc: 宋王俊 (健康経営/DESKTOP-IRL22Q8/10.1.2.32/PC3-<defeb3decd4df17f>)
+   Cc: 常思敏 (健康経営/DESKTOP-4GGESMC/10.1.2.60/csm-<b6f925ce8dc77991>)
+   Cc: 夏菁菁 (Flutter/DESKTOP-H4GAF7U/10.1.2.25/xiajj-czuft-<fb85f842745e7e46>)
+  at Thu Aug 11 10:19:18 2022
+-------------------------------------
+http://10.1.2.210:4200/
