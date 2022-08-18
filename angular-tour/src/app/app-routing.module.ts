@@ -20,6 +20,7 @@ import { NewseditorComponent } from './view/userhome/newseditor/newseditor.compo
 import { NewInfoComponent } from './view/userhome/new-info/new-info.component';
 import { EditorComponent } from './view/userhome/editor/editor.component';
 import { ContentlistComponent } from './view/userhome/new-info/contentlist/contentlist.component';
+import { NewsComponent } from './view/news/news.component';
 const routes: Routes = [
       {
         path:'',
@@ -94,7 +95,10 @@ const routes: Routes = [
             path:'user',
             loadChildren: ()=> import('./view/user/user.module').then(x=>x.UserModule)
           },
-    
+          {
+            path:'news',
+            component:NewsComponent
+          },
         ]
       },
      

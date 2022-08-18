@@ -1,29 +1,29 @@
 <div class="item-wrapper">
     <div class="item" *ngFor="let i of content,let key=index">
         <div class="item-bar">
-            <button nz-button nzShape="round" nzType="default" *ngIf="i.content==null" style="color:black;float:left ;margin-right: 20px;font-size: 13px;"
+            <button nz-button nzShape="round" nzType="primary" *ngIf="i.content==null" style="color:white;float:left ;margin-right: 20px;font-size: 13px;opacity: 0.4;"
                 (click)="addText(key)">添加文字</button>
-            <button nz-button nzShape="round" nzType="primary" *ngIf="i.content==null" style="color:red;float:right ;font-size: 13px;"
+            <button nz-button nzShape="round" nzType="primary" *ngIf="i.content==null" style="color:white;float:right ;font-size: 13px;opacity: 0.4;"
                 (click)="addImage(key)">添加图片</button>
-            <button nz-button nzShape="round" *ngIf="i.content!=null&&i.type=='text'" nzType="default" style="color:black;float: left;font-size: 13px;opacity: 0.5;"
+            <button nz-button nzShape="round" *ngIf="i.content!=null&&i.type=='text'" nzType="primary" style="color:white;float: left;font-size: 13px;opacity: 0.4;"
                 (click)="showModal(key)">编辑</button>
             <nz-modal [(nzVisible)]="isVisible" nzTitle="请选择编辑类型" [nzFooter]="modalFooter2" (nzOnCancel)="close()">
                 <ng-template #modalFooter2>
                     <button nz-button nzType="primary" (click)="Tp(ediId)">编辑图片</button>
-                    <button nz-button nzType="default" (click)="editor1(ediId)">编辑文字</button>
+                    <button nz-button nzType="primary" (click)="editor1(ediId)">编辑文字</button>
                 </ng-template>
             </nz-modal>
-            <button nz-button nzShape="round" nzType="default" *ngIf="i.content!=null&&i.type=='image'" style="color:black;float: left;font-size: 13px;opacity: 0.5;"
+            <button nz-button nzShape="round" nzType="primary" *ngIf="i.content!=null&&i.type=='image'" style="color:white;float: left;font-size: 13px;opacity: 0.4;"
                (click)="showModal2(key)">编辑</button>
             <nz-modal [(nzVisible)]="isVisible2" nzTitle="请选择编辑类型" [nzFooter]="modalFooter" (nzOnCancel)="close2()">
                 <ng-template #modalFooter>
                     <button nz-button nzType="primary" (click)="Pt(ediId2)">编辑文字</button>
-                    <button nz-button nzType="default" (click)="editor2(ediId2)">编辑图片</button>
+                    <button nz-button nzType="primary" (click)="editor2(ediId2)">编辑图片</button>
                 </ng-template>
             </nz-modal>
-            <button nz-button nzShape="round" nzType="primary" *ngIf="i.content!=null" style="color:red;float:right;font-size: 13px;" (click)="delete(key)">删除</button>
+            <button nz-button nzShape="round" nzType="primary" *ngIf="i.content!=null" style="color:white;float:right;font-size: 13px;opacity: 0.4;" (click)="delete(key)">删除</button>
         </div>
-        <div nz-button class="item-t" *ngIf="i.type=='text'"><b>{{i.content}}</b></div>
+        <div nz-button class="item-t" *ngIf="i.type=='text'" style="font-size:20px">{{i.content}}</div>
         <div nz-button class="item-i" *ngIf="i.type=='image'" style="text-align:center;"><img src={{i.content}} alt="" width="100px" height="100px "></div>
     </div>
     <nz-modal [(nzVisible)]="show" nzTitle={{controller.title}} (nzOnCancel)="cancelText()" (nzOnOk)="saveText()" >

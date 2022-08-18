@@ -1,5 +1,5 @@
 <nz-layout class="home-wrapper">
-    <nz-sider nzCollapsible [(nzCollapsed)]="isCollapsed" [nzTrigger]="null">
+    <nz-sider class="nz-sider" nzCollapsible [(nzCollapsed)]="isCollapsed" [nzTrigger]="null">
       <div class="logo"></div>
       <ul nz-menu nzTheme="dark" nzMode="inline">
         <li nz-submenu nzTitle="图片管理" nzIcon="user">
@@ -42,6 +42,5 @@
       <nz-content>
         <router-outlet></router-outlet>
       </nz-content>
-      
     </nz-layout>
   </nz-layout>

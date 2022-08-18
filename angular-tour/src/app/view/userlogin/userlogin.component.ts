@@ -4,6 +4,8 @@ import { FormBuilder, FormGroup, Validators, AbstractControl} from '@angular/for
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
+import { store } from 'src/app/store/store.component';
+import { setTokened } from 'src/app/store/reducers.component';
 @Component({
   selector: 'app-userlogin',
   templateUrl: './userlogin.component.html',
@@ -12,9 +14,10 @@ import { Location } from '@angular/common';
 export class UserloginComponent implements OnInit {
 
   validateForm!: FormGroup;
-  
+ 
   constructor(private fb: FormBuilder,private service:UserService,private message:NzMessageService,private router:Router,private location:Location) {
-    }
+    
+  }
 
   submitForm(): void {
     for (const i in this.validateForm.controls) {
@@ -34,12 +37,11 @@ export class UserloginComponent implements OnInit {
         this.message.error(res.message)
       }
       else {
-        localStorage.setItem("token",'1');
+        const token=store.dispatch(setTokened(res.data.token));
         this.message.success("登录成功!")
         this.router.navigate(['/uhome'])
         console.log(res.data)
-     }
-     
+      }
     })
 
 
@@ -54,6 +56,8 @@ export class UserloginComponent implements OnInit {
       password: [  '马克44', [ Validators.required ,Validators.minLength(3),Validators.maxLength(9)]],
 
     });
+   
   }
 }
+
 

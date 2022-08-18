@@ -57,6 +57,7 @@ import { NewInfoComponent } from './view/userhome/new-info/new-info.component';
 import { EditorComponent } from './view/userhome/editor/editor.component';
 import { ContentlistComponent } from './view/userhome/new-info/contentlist/contentlist.component';
 import { ShowpicComponent } from './view/userhome/newslist/showpic/showpic.component';
+import { NewsComponent } from './view/news/news.component';
 registerLocaleData(zh);
 @NgModule({
   declarations: [
@@ -80,6 +81,7 @@ registerLocaleData(zh);
     EditorComponent,
     ContentlistComponent,
     ShowpicComponent,
+    NewsComponent,
   ],
   imports: [
     BrowserModule,

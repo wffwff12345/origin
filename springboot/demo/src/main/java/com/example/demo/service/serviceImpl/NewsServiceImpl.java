@@ -36,7 +36,11 @@ public class NewsServiceImpl extends ServiceImpl<NewsMapper,News> implements New
         if(!StringUtils.isEmpty(dto.getTitle())){
             query.like(News::getTitle, dto.getTitle());
         }
+        // if(dto.getChannel().equals("首页")){
+        //     dto.setChannel("");
+        // }
         if(!StringUtils.isEmpty(dto.getChannel())){
+
             query.eq(News::getChannel, dto.getChannel());
         }
         IPage<News> result= this.page(page, query);

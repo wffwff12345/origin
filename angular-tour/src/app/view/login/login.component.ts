@@ -4,6 +4,8 @@ import { FormBuilder, FormGroup, Validators, AbstractControl} from '@angular/for
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
+import { store } from 'src/app/store/store.component';
+import { setTokened } from 'src/app/store/reducers.component';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -33,8 +35,10 @@ export class LoginComponent implements OnInit {
         this.message.error(`${res.message}，请注册`)
       }
       else if(res.code == 1006){
-        const token=res.data.token
-        localStorage.setItem("token",token)
+        console.log("前");
+        const token=store.dispatch(setTokened(res.data.token));
+        console.log("后")
+        localStorage.setItem("token",res.data.token) ;
         this.router.navigate(['/home'])
         this.message.success(res.message)
       }
@@ -55,6 +59,10 @@ export class LoginComponent implements OnInit {
       password: [ 123, [ Validators.required ,Validators.minLength(3),Validators.maxLength(9)]],
 
     });
+    console.log("login初始化前")
+    const state=store.getState();
+    console.log(state.token)
+    console.log("login初始化后")
   }
 }
 //   name:string='';

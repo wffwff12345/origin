@@ -1,5 +1,8 @@
 package com.example.demo.service.serviceImpl;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.stereotype.Service;
 import org.springframework.util.DigestUtils;
 
@@ -43,9 +46,10 @@ public class UserServiceImpl extends ServiceImpl<UserMapper,User> implements Use
         {
            return ResponseResult.ErrorResult(TEnum.LOGINGERROR);
         }
-        
-        return ResponseResult.okResult(user, TEnum.LOGINSUCCEED);
+        Map<String, Object> result = new HashMap<>();
+        result.put("user", user);
+        result.put("token", user.getId());
+        return ResponseResult.okResult(result, TEnum.LOGINSUCCEED);
     }
-
     
 }

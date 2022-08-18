@@ -4,6 +4,7 @@ import { filter } from 'rxjs/operators';
 import { OssService } from './oss.service';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { NzUploadFile } from 'ng-zorro-antd/upload';
+
 @Component({
   selector: 'app-oss',
   templateUrl: './oss.component.html',
@@ -24,13 +25,20 @@ export class OssComponent implements OnInit {
   };
 
   handleUpload(): void {
+    let length=this.fileList.length;
     this.fileList.forEach((file: any) => {
       const formData = new FormData();
       formData.append('file', file, file.name);
       this.service.upload(formData).subscribe((res: any) => {
         console.log(res);
         if (res.code == 1001) {
-          this.message.success("成功上传图片");
+          length=length-1;
+          if(length==0){
+            this.message.success("上传图片成功！",{
+              nzDuration:2000
+            });
+            this.fileList= [];
+          }
         } else {
           this.message.error(res.message);
         }

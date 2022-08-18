@@ -8,6 +8,6 @@
     
         <button nz-button [nzType]="'primary'"  (click)="handleUpload()"
             [disabled]="fileList.length === 0" style="margin-top: 16px">
-            {{ uploading ? '上传图片中' : '请上传图片' }}
+            {{ fileList.length === 0 ? '请上传图片' : '上传' }}
         </button>
 </div>
