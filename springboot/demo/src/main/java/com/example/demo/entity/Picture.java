@@ -25,4 +25,6 @@ public class Picture {
     private Integer status;
     @TableField("type")
     private Integer type;
+    @TableField("user_id")
+    private Integer userId;
 }

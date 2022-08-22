@@ -24,6 +24,11 @@ public class NewsController {
         ResponseResult<?> result=service.list(dto);
         return result;
     }
+    @PostMapping("/news")
+    public ResponseResult<?> news(@RequestBody SearchNewsDto dto){
+        ResponseResult<?> result=service.news(dto);
+        return result;
+    }
     @PostMapping("/insert")
     public ResponseResult<?> insert(@RequestBody NewsDto dto){
         ResponseResult<?> result=service.insertnew(dto);
@@ -32,6 +37,10 @@ public class NewsController {
     @GetMapping("/get/{id}")
     public ResponseResult<?> getOne(@PathVariable("id") Integer id){
         return service.getByid(id);
+    }
+    @GetMapping("/getnew/{id}")
+    public ResponseResult<?> getNew(@PathVariable("id") Integer id){
+        return service.get(id);
     }
     @DeleteMapping("/delete/{id}")
     public ResponseResult<?> delete(@PathVariable("id") Integer id){

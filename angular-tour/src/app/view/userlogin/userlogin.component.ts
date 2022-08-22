@@ -33,14 +33,14 @@ export class UserloginComponent implements OnInit {
     this.service.login(logindto).subscribe((res:any)=>{
       console.log(res.message)
       console.log(res)
-      if (res.code != 1006) {
-        this.message.error(res.message)
-      }
-      else {
+      if (res.code == 1006) {
         const token=store.dispatch(setTokened(res.data.token));
         this.message.success("登录成功!")
         this.router.navigate(['/uhome'])
         console.log(res.data)
+      }
+      else {
+        this.message.error(res.message)
       }
     })
 

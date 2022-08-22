@@ -11,6 +11,7 @@ export class UserhomeComponent implements OnInit {
   isCollapsed = false;
   constructor(private router:Router) { }
   logout() {
+    store.dispatch(removeTokened());
     this.router.navigate(['/ulogin'])
    }
   ngOnInit(): void {

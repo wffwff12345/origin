@@ -1,6 +1,8 @@
 package com.example.demo.service.serviceImpl;
 
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.springframework.stereotype.Service;
 import org.springframework.util.DigestUtils;
@@ -45,19 +47,23 @@ public class AppUserImpl extends ServiceImpl<AppUserMapper,AppUser> implements A
         if(!StringUtils.isEmpty(dto.getName())&&!StringUtils.isEmpty(dto.getPassword())){
             LambdaQueryWrapper<AppUser> query=new LambdaQueryWrapper<>();
             query.eq(AppUser::getName, dto.getName());
-            AppUser result=this.getOne(query);
-            if(result==null){
+            AppUser user=this.getOne(query);
+            if(user==null){
                 return ResponseResult.ErrorResult(TEnum.USERISNOTEXIST);
             }
-            if(result.getStatus()==0){
+            if(user.getStatus()==0){
                 return  ResponseResult.ErrorResult(TEnum.USERISNOPOWER);
             }
             String password=dto.getPassword();
             password=DigestUtils.md5DigestAsHex(password.getBytes());
-            if(password.equals(result.getPassword())){
-                return ResponseResult.okResult(result,TEnum.LOGINSUCCEED);
+            if(password.equals(user.getPassword())){
+                Map<String,Object> result= new HashMap<>(); 
+                result.put("user", user);
+                result.put("token",user.getId());
+                return ResponseResult.okResult(result, TEnum.LOGINSUCCEED);
+            }else{
+                return ResponseResult.ErrorResult(TEnum.LOGINGERROR);
             }
-            return ResponseResult.ErrorResult(TEnum.LOGINGERROR);
         }
         return ResponseResult.ErrorResult(TEnum.LOGINISEMPTY);
     }

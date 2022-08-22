@@ -11,4 +11,7 @@ public interface NewsService extends IService<News> {
     ResponseResult<?> insertnew(NewsDto dto);
     ResponseResult<?> getByid(Integer id);
     ResponseResult<?> delete(Integer id);
+    ResponseResult<?> news(SearchNewsDto dto);
+    ResponseResult<?> get(Integer id);
+
 }

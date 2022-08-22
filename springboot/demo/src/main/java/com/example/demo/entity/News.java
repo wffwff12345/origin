@@ -31,5 +31,7 @@ public class News {
     private String content;
     @TableField("channel")
     private String channel;
+    @TableField("user_id")
+    private Integer userId;
     
 }
